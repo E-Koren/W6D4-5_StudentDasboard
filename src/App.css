@@ -39,3 +39,7 @@ header {
 main {
   display: inline;
 }
+
+label {
+  margin-left: 17px;
+}
