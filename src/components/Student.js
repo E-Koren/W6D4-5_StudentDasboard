@@ -47,6 +47,9 @@ class Student extends React.Component {
   render() {
     const difficultyBar = this.state.difficulty ? (
       <VictoryBar
+        style={{
+          data: { fill: "#c43a31" },
+        }}
         barRatio={1}
         barWidth={6}
         data={this.props.studentData}
@@ -57,6 +60,9 @@ class Student extends React.Component {
 
     const ratingBar = this.state.rating ? (
       <VictoryBar
+        style={{
+          data: { fill: "#ADFF2F" },
+        }}
         barRatio={1}
         barWidth={6}
         data={this.props.studentData}

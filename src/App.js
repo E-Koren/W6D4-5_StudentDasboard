@@ -22,7 +22,6 @@ class App extends React.Component {
 
   render() {
     const projectsArray = [...new Set(this.state.data.map((x) => x.project))];
-
     const names = [...new Set(this.state.data.map((x) => x.name))];
     const nameItems = names.map((name, index) => {
       let url = name.toLowerCase();

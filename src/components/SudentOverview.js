@@ -47,6 +47,9 @@ class StudentOverview extends React.Component {
   render() {
     const difficultyBar = this.state.difficulty ? (
       <VictoryBar
+        style={{
+          data: { fill: "#c43a31" },
+        }}
         barRatio={1}
         barWidth={6}
         data={this.props.data}
@@ -57,6 +60,9 @@ class StudentOverview extends React.Component {
 
     const ratingBar = this.state.rating ? (
       <VictoryBar
+        style={{
+          data: { fill: "#ADFF2F" },
+        }}
         barRatio={1}
         barWidth={6}
         data={this.props.data}
@@ -102,7 +108,6 @@ class StudentOverview extends React.Component {
           />
           <VictoryAxis
             tickValues={this.props.projectsArray}
-            domain={[0, 8]}
             tickLabelComponent={
               <VictoryLabel
                 angle={45}
@@ -110,6 +115,7 @@ class StudentOverview extends React.Component {
                 textAnchor="start"
               />
             }
+            fixLabelOverlap
           />
           <VictoryGroup offset={10} colorScale={"qualitative"}>
             {ratingBar}
