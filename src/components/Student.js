@@ -11,11 +11,11 @@ import {
 const WIDTH = 1000;
 const HEIGHT = 500;
 
-function StudentOverview(props) {
+function Student(props) {
   const style = { width: "95%", height: "200px", marginLeft: "20px" };
   return (
     <div style={style}>
-      <h2 className="dash-title">Overview all students</h2>
+      <h2 className="dash-title">{props.title}</h2>
       <VictoryChart
         containerComponent={<VictoryZoomContainer zoomDimension="x" />}
         width={WIDTH}
@@ -41,15 +41,15 @@ function StudentOverview(props) {
           <VictoryBar
             barRatio={1}
             barWidth={6}
-            data={props.data}
-            x="data.project"
+            data={props.studentData}
+            x="studentData.project"
             y={["rating"]}
           />
           <VictoryBar
             barRatio={1}
             barWidth={6}
-            data={props.data}
-            x="data.project"
+            data={props.studentData}
+            x="studentData.project"
             y={["difficulty"]}
           />
         </VictoryGroup>
@@ -58,4 +58,4 @@ function StudentOverview(props) {
   );
 }
 
-export default StudentOverview;
+export default Student;
