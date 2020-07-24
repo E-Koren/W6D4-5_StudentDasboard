@@ -20,7 +20,7 @@ class App extends React.Component {
     return student;
   };
 
-  averageRatingDifficulty = (project, category) => {
+  averageRatingAndDifficulty = (project, category) => {
     const filteredProjects = data.filter((evaluation) => {
       return evaluation.project === project;
     });
@@ -29,8 +29,8 @@ class App extends React.Component {
         .map((evaluation) => {
           return evaluation[category];
         })
-        .reduce((total, num) => {
-          return total + num;
+        .reduce((total, currentValue) => {
+          return total + currentValue;
         }) / filteredProjects.length;
     return averageScore;
   };
@@ -41,14 +41,14 @@ class App extends React.Component {
     const ratingList = projectsList.map((project) => {
       return {
         project: project,
-        rating: this.averageRatingDifficulty(project, "rating"),
+        rating: this.averageRatingAndDifficulty(project, "rating"),
       };
     });
 
     const difficultyList = projectsList.map((project) => {
       return {
         project: project,
-        difficulty: this.averageRatingDifficulty(project, "difficulty"),
+        difficulty: this.averageRatingAndDifficulty(project, "difficulty"),
       };
     });
 

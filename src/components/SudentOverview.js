@@ -8,8 +8,8 @@ import {
   VictoryZoomContainer,
 } from "victory";
 
-const WIDTH = 1000;
-const HEIGHT = 500;
+const WIDTH = 1200;
+const HEIGHT = 400;
 
 class StudentOverview extends React.Component {
   constructor() {
@@ -50,11 +50,11 @@ class StudentOverview extends React.Component {
         style={{
           data: { fill: "#c43a31" },
         }}
-        barRatio={1}
         barWidth={6}
         data={this.props.difficultyList}
-        x="data.project"
+        x={"data.project"}
         y={["difficulty"]}
+        alignment="start"
       />
     ) : null;
 
@@ -63,15 +63,15 @@ class StudentOverview extends React.Component {
         style={{
           data: { fill: "#ADFF2F" },
         }}
-        barRatio={1}
         barWidth={6}
-        data={this.props.ratingList}
+        data={(0, this.props.ratingList)}
         x="data.project"
         y={["rating"]}
+        alignment="start"
       />
     ) : null;
 
-    const style = { width: "95%", height: "200px", marginLeft: "20px" };
+    const style = { width: "95%", marginLeft: "20px" };
     return (
       <div style={style}>
         <h2 className="dash-title">Overview all students</h2>
@@ -115,9 +115,8 @@ class StudentOverview extends React.Component {
                 textAnchor="start"
               />
             }
-            fixLabelOverlap
           />
-          <VictoryGroup offset={10} colorScale={"qualitative"}>
+          <VictoryGroup offset={5} colorScale={"qualitative"}>
             {ratingBar}
             {difficultyBar}
           </VictoryGroup>

@@ -3,17 +3,15 @@ body {
 }
 
 .list {
-  display: grid;
+  display: flex;
   margin-right: 50px;
-  grid-template-columns: repeat(4, 1fr);
-  grid-gap: 3px;
+
   list-style-type: none;
 }
 
 .list-item {
   padding: 10px;
-
-  background-color: rgb(136, 151, 167);
+  background-color: rgb(111, 123, 136);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -30,7 +28,7 @@ a:hover {
 
 header {
   font-size: 2rem;
-  margin: 10px 0px 10px 35px;
+  margin: 10px 0px 10px 37px;
 }
 .dash-title {
   margin: 10px 0px 10px 20px;
