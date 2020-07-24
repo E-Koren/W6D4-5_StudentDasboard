@@ -52,7 +52,7 @@ class StudentOverview extends React.Component {
         }}
         barRatio={1}
         barWidth={6}
-        data={this.props.data}
+        data={this.props.difficultyList}
         x="data.project"
         y={["difficulty"]}
       />
@@ -65,7 +65,7 @@ class StudentOverview extends React.Component {
         }}
         barRatio={1}
         barWidth={6}
-        data={this.props.data}
+        data={this.props.ratingList}
         x="data.project"
         y={["rating"]}
       />
@@ -107,7 +107,7 @@ class StudentOverview extends React.Component {
             domain={[0, 5]}
           />
           <VictoryAxis
-            tickValues={this.props.projectsArray}
+            tickValues={this.props.projectsList}
             tickLabelComponent={
               <VictoryLabel
                 angle={45}

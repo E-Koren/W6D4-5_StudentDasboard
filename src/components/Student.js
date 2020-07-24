@@ -107,7 +107,7 @@ class Student extends React.Component {
             domain={[0, 5]}
           />
           <VictoryAxis
-            tickValues={this.props.projectsArray}
+            tickValues={this.props.projectsList}
             domain={[0, 8]}
             tickLabelComponent={
               <VictoryLabel
@@ -116,6 +116,7 @@ class Student extends React.Component {
                 textAnchor="start"
               />
             }
+            fixLabelOverlap
           />
           <VictoryGroup offset={10} colorScale={"qualitative"}>
             {difficultyBar}

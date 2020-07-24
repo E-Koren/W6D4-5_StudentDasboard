@@ -20,8 +20,38 @@ class App extends React.Component {
     return student;
   };
 
+  averageRatingDifficulty = (project, category) => {
+    const filteredProjects = data.filter((evaluation) => {
+      return evaluation.project === project;
+    });
+    const averageScore =
+      filteredProjects
+        .map((evaluation) => {
+          return evaluation[category];
+        })
+        .reduce((total, num) => {
+          return total + num;
+        }) / filteredProjects.length;
+    return averageScore;
+  };
+
   render() {
-    const projectsArray = [...new Set(this.state.data.map((x) => x.project))];
+    const projectsList = [...new Set(this.state.data.map((x) => x.project))];
+
+    const ratingList = projectsList.map((project) => {
+      return {
+        project: project,
+        rating: this.averageRatingDifficulty(project, "rating"),
+      };
+    });
+
+    const difficultyList = projectsList.map((project) => {
+      return {
+        project: project,
+        difficulty: this.averageRatingDifficulty(project, "difficulty"),
+      };
+    });
+
     const names = [...new Set(this.state.data.map((x) => x.name))];
     const nameItems = names.map((name, index) => {
       let url = name.toLowerCase();
@@ -54,7 +84,7 @@ class App extends React.Component {
                   <Student
                     title={`Aranka`}
                     studentData={this.filteredStudents(1)}
-                    projectsArray={projectsArray}
+                    projectsList={projectsList}
                   />
                 )}
               />
@@ -64,7 +94,7 @@ class App extends React.Component {
                   <Student
                     title={`Evelyn`}
                     studentData={this.filteredStudents(2)}
-                    projectsArray={projectsArray}
+                    projectsList={projectsList}
                   />
                 )}
               />
@@ -74,7 +104,7 @@ class App extends React.Component {
                   <Student
                     title={`Floris`}
                     studentData={this.filteredStudents(3)}
-                    projectsArray={projectsArray}
+                    projectsList={projectsList}
                   />
                 )}
               />
@@ -84,7 +114,7 @@ class App extends React.Component {
                   <Student
                     title={`Hector`}
                     studentData={this.filteredStudents(4)}
-                    projectsArray={projectsArray}
+                    projectsList={projectsList}
                   />
                 )}
               />
@@ -94,7 +124,7 @@ class App extends React.Component {
                   <Student
                     title={`Martina`}
                     studentData={this.filteredStudents(5)}
-                    projectsArray={projectsArray}
+                    projectsList={projectsList}
                   />
                 )}
               />
@@ -104,7 +134,7 @@ class App extends React.Component {
                   <Student
                     title={`Maurits`}
                     studentData={this.filteredStudents(6)}
-                    projectsArray={projectsArray}
+                    projectsList={projectsList}
                   />
                 )}
               />
@@ -114,7 +144,7 @@ class App extends React.Component {
                   <Student
                     title={`Rahima`}
                     studentData={this.filteredStudents(7)}
-                    projectsArray={projectsArray}
+                    projectsList={projectsList}
                   />
                 )}
               />
@@ -124,7 +154,7 @@ class App extends React.Component {
                   <Student
                     title={`Sandra`}
                     studentData={this.filteredStudents(8)}
-                    projectsArray={projectsArray}
+                    projectsList={projectsList}
                   />
                 )}
               />
@@ -134,7 +164,7 @@ class App extends React.Component {
                   <Student
                     title={`Wietske`}
                     studentData={this.filteredStudents(9)}
-                    projectsArray={projectsArray}
+                    projectsList={projectsList}
                   />
                 )}
               />
@@ -144,14 +174,15 @@ class App extends React.Component {
                   <Student
                     title={`Storm`}
                     studentData={this.filteredStudents(10)}
-                    projectsArray={projectsArray}
+                    projectsList={projectsList}
                   />
                 )}
               />
               <Route path="/">
                 <SudentOverview
-                  projectsArray={projectsArray}
-                  data={this.state.data}
+                  projectsList={projectsList}
+                  ratingList={ratingList}
+                  difficultyList={difficultyList}
                 />
               </Route>
             </Switch>
